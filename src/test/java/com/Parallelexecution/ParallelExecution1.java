@@ -17,6 +17,7 @@ public class ParallelExecution1 {
 	@Test
 	public void method3() {
 		System.out.println("class1--->>>method3-->" +Thread.currentThread().getId());
+		System.out.println("class1--->>>method2-->" +Thread.currentThread().getId());
 	}
 	
 	
