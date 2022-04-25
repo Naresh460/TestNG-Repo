@@ -12,7 +12,9 @@ public class GoogleHomePage extends AbstractPage<GoogleHomePage, SamplePageFacto
   public GoogleSearchResultsPage submitSearch(String query) {
     q.sendKeys(query);
     q.submit();
+    System.out.println("test");
     return getPageFactory().getSearchResultsPage();
+   
   }
 
   @Override
