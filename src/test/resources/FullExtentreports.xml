@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!--Groups at test level -->
+<suite name="DemoSuite"  >
+<listeners>
+<listener class-name="utility.ITestListnerclass"></listener></listeners>
+	<test name="AccessGoogle">
+		<classes>
+			<class name="utility.TestPage">
+				<methods>
+					<include name="accessGoogle"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+	<test name="AccessFacebbok">
+		<classes>
+			<class name="utility.TestPage">
+				<methods>
+					<include name="accessFacebbok"></include>
+				</methods>
+
+			</class>
+		</classes>
+	</test>
+	<test name="AccessGmail">
+
+		<classes>
+			<class name="utility.TestPage">
+				<methods>
+
+					<include name="accessGmail"></include>
+				</methods>
+
+
+			</class>
+		</classes>
+	</test>
+</suite>

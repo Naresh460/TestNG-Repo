@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!--Groups at test level -->
+<!--<suite name="DemoSuite">
+	<test name="smoke">
+		<groups>
+			<run>
+				<include name="smoke" />
+			</run>
+		</groups>
+		<classes>
+			<class name="testigTestNG.Grouping"></class>
+		</classes>
+	</test>
+
+	<test name="sanity">
+		<groups>
+			<run>
+				<include name="sanity" />
+			</run>
+		</groups>
+		<classes>
+			<class name="testigTestNG.Grouping"></class>
+		</classes>
+	</test>
+</suite> -->
+
+<!--Groups at test level -->
+
+<suite name="Suite level Groups">
+	<groups>
+		<run>
+			<include name="smoke" />
+		</run>
+	</groups>
+	<test name="smoke">
+		<classes>
+			<class name="testigTestNG.Grouping"></class>
+		</classes>
+	</test>
+</suite>
+
+<!-- Test cases
+
+1) Sanity test: Login, selectItem,cartandbook,logout
+2) Exclude groups :
+3) Group of Groups -->
