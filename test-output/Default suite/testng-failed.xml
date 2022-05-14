@@ -3,12 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.js.demo.Scrolloperations">
+      <class name="com.shushilpage.Sushilpage">
         <methods>
-          <include name="setup"/>
-          <include name="scroll"/>
+          <include name="testm"/>
+          <include name="beforeTest"/>
+          <include name="aftertest"/>
         </methods>
-      </class> <!-- com.js.demo.Scrolloperations -->
+      </class> <!-- com.shushilpage.Sushilpage -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -34,7 +34,7 @@ public class Extentreports_Base {
 	static ExtentTest extenttest; 
 	DateFormat dateFormat_report = new SimpleDateFormat("dd-mm-yyyy h-m-s");
 	Date date_report = new Date();
-	String filename_report;
+	 String filename_report;
 	static String subFolder;
 
 	@BeforeTest
@@ -95,9 +95,6 @@ public class Extentreports_Base {
 
 		}
 		TakesScreenshot scrShot =((TakesScreenshot)driver);
-		//Call getScreenshotAs method to create image file
-		//	String SrcFile=scrShot.getScreenshotAs(OutputType.BASE64);
-		//	return SrcFile;
 		File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
 		File DestFile=new File("F:\\sample\\"+subFolder+"\\"+filename+"-"+dateFormat.format(date)+".png");
 		FileUtils.copyFile(SrcFile, DestFile);

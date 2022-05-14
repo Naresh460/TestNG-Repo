@@ -10,8 +10,8 @@
         <methods>
           <include name="initialiseReport"/>
           <include name="generateReports"/>
-          <include name="tearDown"/>
           <include name="accessFacebbok"/>
+          <include name="tearDown"/>
           <include name="setup"/>
         </methods>
       </class> <!-- utility.TestPage -->
