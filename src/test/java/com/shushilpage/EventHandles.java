@@ -1,6 +1,7 @@
 package com.shushilpage;
 
 import java.io.File;
+
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -12,20 +13,39 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.events.WebDriverListener;
+import org.testng.ITestContext;
+import org.testng.ITestListener;
+import org.testng.ITestResult;
+import org.testng.annotations.Listeners;
+
+import com.aventstack.extentreports.AnalysisStrategy;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.service.ExtentService;
+import com.aventstack.extentreports.service.ExtentTestManager;
+import com.aventstack.extentreports.testng.listener.commons.ExtentTestCommons;
+
 
 public class EventHandles extends Sushilpage implements WebDriverListener {
 	
-	 @Override
-	    public void beforeClick(WebElement element) {
+	@Override
+	public void beforeClick(WebElement element) {
 	        // TODO Auto-generated method stub
 	       
 	        try {
-				screenShot(driver);
+	        	System.out.println("Before Clcik");
+			String path = screenShot();
+				
+				//extenttest.addScreenCaptureFromPath(path);
+			extenttest.addScreenCaptureFromBase64String(path);
+			
+				
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 	    }
+	
+	 
  
 //	 @Override
 //	    public void afterFindElement(WebDriver driver, By locator, WebElement result) {
@@ -39,24 +59,7 @@ public class EventHandles extends Sushilpage implements WebDriverListener {
 //			}
 //	    }
 	 
-	 public String screenShot(WebDriver driver) throws IOException {
-		 String filename ="naresh";
-			String dateName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
-			TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
-			File source = takesScreenshot.getScreenshotAs(OutputType.FILE);
-			File destination = new File(System.getProperty("user.dir")+"\\Screenshots\\" + filename + "_" + dateName + ".png");	
-			
-			try {
-				FileUtils.copyFile(source, destination);
-			} catch (Exception e) {
-				e.getMessage();
-			}
-			// This new path for jenkins
-			//String newImageString = "http://localhost:8080/job/GitFrameWork/ws/FrameWork/Screenshots/"+ filename +"_"+dateName +".png";
-		   // return newImageString;
-		return destination.getAbsolutePath();
-		
-	}
+	 
 }
  
 	

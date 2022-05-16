@@ -1,16 +1,34 @@
 package com.shushilpage;
 
+import java.awt.Desktop;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Base64;
+
+import java.util.Date;
 import java.util.List;
+import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import javax.imageio.ImageIO;
+
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.time.StopWatch;
+
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.HasCapabilities;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -18,22 +36,55 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.events.EventFiringDecorator;
-import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.events.WebDriverListener;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
-import io.opentelemetry.exporter.logging.SystemOutLogExporter;
-import lombok.var;
 
 public class Sushilpage {	
 	public static WebDriver driver;
+	public static ExtentTest extenttest ;
+	public static ExtentReports reprtengine;
+	static ExtentSparkReporter sparkreport_all;
+	DateFormat dateFormat_report = new SimpleDateFormat("dd-mm-yyyy h-m-s");
+	Date date_report = new Date();
+	String filename_report;
+	public static String encodedBase64=null;
+
+
+
+	@BeforeSuite
+	public void loadConfig(ITestContext context) throws IOException {
+
+		String docTitile=context.getCurrentXmlTest().getName();
+		filename_report = context.getSuite().getName();
+		reprtengine = new ExtentReports();			
+		sparkreport_all = new ExtentSparkReporter(System.getProperty("user.dir")+"\\SushilReports\\"+filename_report+"-"+dateFormat_report.format(date_report)+".html");
+		sparkreport_all.config().setDocumentTitle(docTitile);
+		sparkreport_all.config().setReportName("Naresh");
+		sparkreport_all.loadXMLConfig("C:\\Users\\nbusireddy\\Selenium\\git\\extentReport-config.xml");
+		reprtengine.attachReporter(sparkreport_all);	  
+		reprtengine.setSystemInfo("OS", System.getProperty("os.name"));
+
+	}
+
+	@AfterSuite
+	public void generateReports() throws IOException {		
+		reprtengine.flush();
+		Desktop.getDesktop().browse(new File(System.getProperty("user.dir")+"\\SushilReports\\"+filename_report+"-"+dateFormat_report.format(date_report)+".html").toURI());
+	}
 
 	@BeforeMethod
 	public void beforeTest() {
@@ -121,7 +172,7 @@ public class Sushilpage {
 
 		//OS and Browser details
 
-		Capabilities cap =((RemoteWebDriver)driver).getCapabilities();
+		Capabilities cap =((HasCapabilities) driver).getCapabilities();
 		String browserName=cap.getBrowserName();
 		String browserversion=cap.getBrowserVersion();
 		String osname=System.getProperty("os.name");
@@ -248,26 +299,56 @@ public class Sushilpage {
 
 
 
-//		@Test
-//		public void testm() throws InterruptedException {
-//			WebDriverManager.chromedriver().setup();
-//			WebDriver driver = new ChromeDriver();
-////			 WebDriverListener customListener = new EventHandles();
-////			 driver = new EventFiringDecorator(customListener).decorate(new ChromeDriver());		
-//			
-//			driver.get("https://codewithsushil.in/1.17PlatformInfo.html");
-//			Capabilities cap =((RemoteWebDriver)driver).getCapabilities();
-//			String browserName=cap.getBrowserName();
-//			String browserversion=cap.getBrowserVersion();
-//			String osname=System.getProperty("os.name");
-//			String osversion = System.getProperty("os.version");
-//			System.out.println(browserName);
-//			driver.findElement(By.id("osName")).sendKeys(osname);
-//			driver.findElement(By.id("os-version")).sendKeys(osversion);
-//			driver.findElement(By.id("browserName")).sendKeys(browserName);
-//			driver.findElement(By.id("browserVersion")).sendKeys(browserversion);
-//			driver.findElement(By.partialLinkText("Finish")).click();
-//			
-//			
-//		}
+	//		@Test
+	//		public void testm() throws InterruptedException {
+	//			WebDriverManager.chromedriver().setup();
+	//			WebDriver driver = new ChromeDriver();
+	////			 WebDriverListener customListener = new EventHandles();
+	////			 driver = new EventFiringDecorator(customListener).decorate(new ChromeDriver());		
+	//			
+	//			driver.get("https://codewithsushil.in/1.17PlatformInfo.html");
+	//			Capabilities cap =((RemoteWebDriver)driver).getCapabilities();
+	//			String browserName=cap.getBrowserName();
+	//			String browserversion=cap.getBrowserVersion();
+	//			String osname=System.getProperty("os.name");
+	//			String osversion = System.getProperty("os.version");
+	//			System.out.println(browserName);
+	//			driver.findElement(By.id("osName")).sendKeys(osname);
+	//			driver.findElement(By.id("os-version")).sendKeys(osversion);
+	//			driver.findElement(By.id("browserName")).sendKeys(browserName);
+	//			driver.findElement(By.id("browserVersion")).sendKeys(browserversion);
+	//			driver.findElement(By.partialLinkText("Finish")).click();
+	//			
+	//			
+	//		}
+
+	public String screenShot() throws IOException {
+
+		String encodedBase64=null;
+		String filename ="naresh";
+		String dateName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
+		TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
+		File source = takesScreenshot.getScreenshotAs(OutputType.FILE);
+		File destination = new File(System.getProperty("user.dir")+"\\Screenshots\\" + filename + "_" + dateName + ".png");	
+		FileUtils.copyFile(source, destination);
+		String destination1=destination.getAbsolutePath();
+		System.out.println(destination1);
+		try {			
+			 
+			byte[] fileContent = FileUtils.readFileToByteArray(source);
+			encodedBase64 = "data:image/png;base64,"+Base64.getEncoder().encodeToString(fileContent);
+			
+		
+		} catch (Exception e) {
+			e.getMessage();
+		}
+		// This new path for jenkins
+		//String newImageString = "http://localhost:8080/job/GitFrameWork/ws/FrameWork/Screenshots/"+ filename +"_"+dateName +".png";
+		// return newImageString;
+		
+		
+		//return destination.getAbsolutePath();
+		return encodedBase64;
+
+	}
 }

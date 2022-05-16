@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Login case(failed)">
+  <listeners>
+    <listener class-name="com.shushilpage.IListeners"/>
+  </listeners>
+  <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="utility.testNgdemo1">
+      <class name="com.shushilpage.Sushilpage">
         <methods>
-          <include name="initialiseReport"/>
+          <include name="beforeTest"/>
           <include name="generateReports"/>
-          <include name="enterCredentials"/>
-          <include name="checkStatusandaddingScreenshots"/>
-          <include name="tearDown"/>
-          <include name="setup"/>
+          <include name="aftertest"/>
+          <include name="testmethod"/>
+          <include name="loadConfig"/>
         </methods>
-      </class> <!-- utility.testNgdemo1 -->
+      </class> <!-- com.shushilpage.Sushilpage -->
     </classes>
-  </test> <!-- Login case(failed) -->
+  </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

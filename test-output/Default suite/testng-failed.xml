@@ -5,9 +5,9 @@
     <classes>
       <class name="com.shushilpage.Sushilpage">
         <methods>
-          <include name="testm"/>
           <include name="beforeTest"/>
           <include name="aftertest"/>
+          <include name="testmethod"/>
         </methods>
       </class> <!-- com.shushilpage.Sushilpage -->
     </classes>

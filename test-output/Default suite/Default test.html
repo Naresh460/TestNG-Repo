@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Sat May 14 20:57:02 IST 2022</td>
+<td>Started on:</td><td>Sun May 15 18:02:43 IST 2022</td>
 </tr>
-<tr><td>Total time:</td><td>23 seconds (23489 ms)</td>
+<tr><td>Total time:</td><td>205 seconds (205909 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,9 +75,16 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.shushilpage.Sushilpage.testm()'><b>testm</b><br>Test class: com.shushilpage.Sushilpage</td>
-<td><div><pre>java.lang.ClassCastException: class org.openqa.selenium.chrome.ChromeDriver cannot be cast to class org.openqa.selenium.Capabilities (org.openqa.selenium.chrome.ChromeDriver and org.openqa.selenium.Capabilities are in unnamed module of loader &apos;app&apos;)
-	at com.shushilpage.Sushilpage.testm(Sushilpage.java:259)
+<td title='com.shushilpage.Sushilpage.testmethod()'><b>testmethod</b><br>Test class: com.shushilpage.Sushilpage</td>
+<td><div><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for alert to be present (tried for 30 second(s) with 500 milliseconds interval)
+Build info: version: &apos;4.1.3&apos;, revision: &apos;7b1ebf28ef&apos;
+System info: host: &apos;AHS-LP-181&apos;, ip: &apos;192.168.1.2&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.2&apos;
+Driver info: net.bytebuddy.renamed.java.lang.Object$ByteBuddy$Jjmn7VyE
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 101.0.4951.54, chrome: {chromedriverVersion: 101.0.4951.41 (93c720db8323..., userDataDir: C:\Users\NBUSIR~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:65004}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:65004/devtoo..., se:cdpVersion: 101.0.4951.54, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: b317bd02fa781f69c6e125b3af03fd08
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:87)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:231)
+	at com.shushilpage.Sushilpage.testmethod(Sushilpage.java:186)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -106,9 +113,16 @@ function toggleAllBoxes() {
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-</pre></div><a href='#' onClick='toggleBox("stack-trace658781536", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace658781536'><pre>java.lang.ClassCastException: class org.openqa.selenium.chrome.ChromeDriver cannot be cast to class org.openqa.selenium.Capabilities (org.openqa.selenium.chrome.ChromeDriver and org.openqa.selenium.Capabilities are in unnamed module of loader &apos;app&apos;)
-	at com.shushilpage.Sushilpage.testm(Sushilpage.java:259)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1612625071", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1612625071'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for alert to be present (tried for 30 second(s) with 500 milliseconds interval)
+Build info: version: &apos;4.1.3&apos;, revision: &apos;7b1ebf28ef&apos;
+System info: host: &apos;AHS-LP-181&apos;, ip: &apos;192.168.1.2&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.2&apos;
+Driver info: net.bytebuddy.renamed.java.lang.Object$ByteBuddy$Jjmn7VyE
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 101.0.4951.54, chrome: {chromedriverVersion: 101.0.4951.41 (93c720db8323..., userDataDir: C:\Users\NBUSIR~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:65004}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:65004/devtoo..., se:cdpVersion: 101.0.4951.54, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: b317bd02fa781f69c6e125b3af03fd08
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:87)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:231)
+	at com.shushilpage.Sushilpage.testmethod(Sushilpage.java:186)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -138,8 +152,8 @@ function toggleAllBoxes() {
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 </pre></div></td>
-<td>12</td>
-<td>com.shushilpage.Sushilpage@46cdf8bd</td></tr>
+<td>161</td>
+<td>com.shushilpage.Sushilpage@449a4f23</td></tr>
 </table><p>
 </body>
 </html>
